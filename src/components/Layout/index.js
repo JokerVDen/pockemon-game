@@ -1,10 +1,10 @@
 import s from './index.module.css';
 
-const Layout = ({ title, descr, urlBg, colorBg }) => {
+const Layout = ({ title, urlBg, colorBg, children }) => {
 
     const style = {
-        ...(colorBg) && { backgroundColor: colorBg },
-        ...(urlBg) && { backgroundImage: `url(${urlBg})` },
+        ...(colorBg ? { backgroundColor: colorBg } : {}),
+        ...(urlBg ? { backgroundImage: `url(${urlBg})` } : {}),
     }
 
     return (
@@ -16,7 +16,7 @@ const Layout = ({ title, descr, urlBg, colorBg }) => {
                         <span className={s.separator}></span>
                     </div>
                     <div className={`${s.desc} ${s.full}`}>
-                        <p>{descr}</p>
+                        {children}
                     </div>
                 </article>
             </div>
